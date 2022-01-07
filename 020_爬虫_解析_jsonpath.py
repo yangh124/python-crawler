@@ -1,7 +1,7 @@
 import json
 import jsonpath
 
-obj = json.load(open('020_爬虫解析_jsonpath.json', 'r', encoding='utf-8'))
+obj = json.load(open('020_爬虫_解析_jsonpath.json', 'r', encoding='utf-8'))
 
 # 所有书的作者
 book_author_list = jsonpath.jsonpath(obj, '$.store.book[*].author')
