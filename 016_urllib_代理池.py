@@ -11,17 +11,19 @@ headers = {
 request = urllib.request.Request(url=url, headers=headers)
 
 # 快代理
-proxies_pool = [
-    {'http': '222.78.6.190:8083'},
-    {'http': '222.78.6.191:8083'},
-    {'http': '222.78.6.192:8083'},
-]
-proxies = random.choice(proxies_pool)
+# proxies_pool = [
+#     {'http': '222.78.6.190:8083'},
+#     {'http': '222.78.6.191:8083'},
+#     {'http': '222.78.6.192:8083'},
+# ]
 
-print(proxies)
+# proxy = random.choice(proxies_pool)
+proxy_url = urllib.request.urlopen('http://localhost:5555/random').read().decode('utf-8').strip()
+
+proxy = {'http': 'http://' + proxy_url}
 
 # 获取ProxyHandler
-handler = urllib.request.ProxyHandler(proxies=proxies)
+handler = urllib.request.ProxyHandler(proxies=proxy)
 
 # 创建opener
 opener = urllib.request.build_opener(handler)
